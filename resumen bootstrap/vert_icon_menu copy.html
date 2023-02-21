@@ -1,0 +1,137 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    
+    <title>Sidebars · Bootstrap v5.3</title>
+
+    <link   href="https://getbootstrap.com/docs/5.3/examples/sidebars/" rel="canonical">
+    <link   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Nativos de css -->
+    <!-- Iconos para <i class=""></i> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <!-- Propios y nativos de css -->
+    <!-- <svg class="icon"><use xlink:href=""></svg></use> -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="home"               viewBox="0 0 16 16"><path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"></path></symbol>
+        <symbol id="speedometer2"       viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"></path><path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"></path></symbol>
+    </svg>
+
+    <style>
+        /* Cada menu vertical */
+        .menu_css {
+            width: 4.5rem;
+            height: 100vh;
+        }
+
+        /* Item del menu */
+        .menu_css nav li {
+            border-bottom: 1px solid #dee2e6;
+            border-radius: 0;
+        }
+
+        .right_menu {
+            margin-left: auto;  /* Ubicado a la derecha */
+        }
+        
+        .icon {
+            fill: currentColor;
+            width: 24px;
+            height: 40px;
+        }
+    </style>
+
+  </head>
+  <body class="d-flex">
+
+    <script>
+        var imports = document.querySelectorAll('link[rel=import]');
+        imports.forEach(e => {
+            fetch(e.href)
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementsByTagName('body').innerHTML += html;
+                });
+    
+        });
+    </script>
+
+    <!-- bg-light le pone fondo gris -->
+    <nav class="menu_css bg-light">       
+        <!-- nav quita los puntos de la lista, nav-pill permite usar active -->  
+        <!-- flex-column hace que los iconos ocupen todo el ancho del div   -->
+        <!-- text-center los centra -->                                                      
+        <ul class="nav nav-pills flex-column text-center">
+            <!-- nav-link trabaja con nav-pills -->
+            <!-- Abre el menu desplegable OffCanvas. Los links(a) usan data-bs-toggle, role y href -->
+            <li class="nav-item"> <a href="#offcanvasMenu" class="nav-link" data-bs-toggle="offcanvas" role="button" ><svg class="icon">
+                <use xlink:href="#bigger-than"></use> </svg></a>
+            </li>
+            <li class="nav-item"> <a href="#" class="nav-link active rounded-0"><svg class="icon">
+                    <use xlink:href="#home"></use> </svg></a>
+            </li>   
+        </ul>
+    </nav>
+    
+    <nav class="menu_css right_menu d-flex flex-column bg-light">
+        <!-- Menu desplegable sup izq, foto del usuario -->
+        <!-- mb-auto es lo que permite que el menu se muestre al final de la pagina, nav es 100hv -->
+        <div class="dropdown mb-auto">
+            <!-- Flechita negra -->
+            <a  class="dropdown-toggle d-flex p-3 link-dark align-items-center" href="#"
+                data-bs-toggle="dropdown">
+                <!-- Foto de perfil -->
+                <img class="rounded-circle" width="24" height="24" src="https://github.com/mdo.png" >
+            </a>    
+            <ul class="dropdown-menu text-small shadow">
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <hr class="dropdown-divider"> <!-- Division horizontal del menu -->
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+        </div>
+
+        <!-- Se muestra al final (bottom) porque el div anterior uso mb-auto y el nav es 100hv -->
+        <ul class="nav nav-pills nav-flush flex-column text-center">
+            <li class="nav-item"> <a href="#" class="nav-link border-top"><svg class="icon">
+                <use xlink:href="#cpu-fill"></use> </svg></a>
+            </li>        
+            <li class="nav-item"> <a href="#" class="nav-link"><svg class="icon">
+                <use xlink:href="#gear-fill"></use> </svg></a>
+            </li>
+            <li class="nav-item"> <a href="#" class="nav-link"><svg class="icon">
+                <use xlink:href="#speedometer"></use> </svg></a>
+            </li>
+            <li class="nav-item"> <a href="#" class="nav-link"><svg class="icon">
+                <use xlink:href="#toggles2"></use> </svg></a>
+            </li>
+            <li class="nav-item"> <a href="#" class="nav-link"><svg class="icon">
+                <use xlink:href="#tools"></use> </svg></a>
+            </li>  
+            <li class="nav-item"> <a href="#" class="nav-link"><svg class="icon">
+                <use xlink:href="#geo-fill"></use> </svg></a>
+            </li>
+        </ul>
+    </nav>
+
+    <nav>
+        <!-- Menu desplegable -->
+        <!-- data-bs-scroll permite scrollar la web con el menu abierto -->
+        <!-- El id es para vincularlo al boton -->
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" id="offcanvasMenu">
+
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title">Menu</h5>
+            </div>
+            <div class="offcanvas-body">
+                <p>Try scrolling the rest of the page to see this option in action.</p>
+            </div>
+        </div>
+    </nav>
+
+</body>
+</html>
