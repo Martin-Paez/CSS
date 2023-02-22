@@ -3,8 +3,8 @@ html {
 }
 
 body {
-    display: flex;          /* Menu | Main */
-    margin: 0px;            /* Menu buen pegado al borde */
+    display: flex;                              /* Menu | Main */
+    margin: 0px;                                /* Menu buen pegado al borde */
     font-size: calc(12px + 3.5 * ((100vw - 700px) / 700)) !important;
 }
 
@@ -14,15 +14,15 @@ main {
 
 .folding-menu {
     display: flex;          
-    flex-direction: column;             /* Menu Vertical*/
+    flex-direction: column;                     /* Menu Vertical*/
     height: 100vh;
-    background-color: #202123;        /* Animable */
-    width: 18rem;                       /* Necesario valor inicial para animar*/
+    background-color: #202123;                /* Animable */
+    width: 18rem;                               /* Necesario valor inicial para animar*/
     transform: translateX(0);
-    transition: transform 0.5s ease-in-out,   /* Anima todo (all)*/
+    transition: transform 0.5s ease-in-out,     /* Anima todo (all)*/
                 width 0.5s ease-in-out,
                 box-shadow 0.5s ease-in-out;
-    box-shadow: 0 0 0.5rem 0.5rem;      /* Animable */
+    box-shadow: 0 0 0.5rem 0.5rem;              /* Animable */
 }
 
 .folding-links {
@@ -32,20 +32,14 @@ main {
 .folding-links > * {    
     padding: 1rem 3rem 1rem 2rem;
     font-size: 1.8rem;
-    max-width: 18rem;
     text-decoration: none;
     transition: padding 0.5s ease-in-out,
                 font-size 0.5s ease-in-out;
 }
 
-.folding-links > a {
-    width: 100%;
-}
-
 .folding-menu a {
     display: flex;
     color: #d0cccc;
-    align-items: center;
 }
 
 .folding-menu span {
@@ -55,7 +49,6 @@ main {
 }
 
 .folding-menu i {
-    padding-left: 0rem;
     transition: font-size 0.5s ease-in-out;
 }
 

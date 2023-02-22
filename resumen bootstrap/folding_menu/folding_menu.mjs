@@ -3,9 +3,11 @@ import {ToggleList} from './ToggleList.mjs';
 import {ToggledAlwaysVisibleBtns} from './ToggledAlwaysVisibleBtns.mjs';
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    let menu    =   $('.folding-menu');
-    setHideBtnsHandler(menu);
-    setExpandBtnHandlers(menu);
+    let menus = $('.folding-menu');
+    menus.each((menu)=>{
+        setHideBtnsHandler(menu);
+        setExpandBtnHandlers(menu);
+    });
 });
 
 function setHideBtnsHandler(menu) 
@@ -20,34 +22,29 @@ function setHideBtnsHandler(menu)
 
 function setExpandBtnHandlers(menu) 
 {
-    let $foldIcon   = menu.find('.expand-btn i'); 
-    let $foldLink   = menu.find('.expand-btn');
-    let expBtn      = new ToggledAlwaysVisibleBtns($foldIcon, $foldLink);
+    let $expandLink = menu.find('.expand-btn');
+    let $expandIcon = $expandLink.find('i'); 
+    let expandBtn   = new ToggledAlwaysVisibleBtns($expandIcon, $expandLink);
 
-    expBtn.on('click', () => { foldBtnEvent(menu, 'narrow'); });
+    expandBtn.on('click', () => { initToolTips(menu); });
 }
 
-function foldBtnEvent(menu, foldClass) {
-    let links   =   menu.find('.folding-links a');
-    let arrows  =   menu.find('.hide-btn, .expand-btn');
-
-    let show = `overflow: visible`;
-    let hide = 'overflow: hidden';
-
-    let linkMgr = new HoverStyleMgr(links , 'span', hide);
+function initToolTips(menu) 
+{
+    let arrows  = menu.find('.hide-btn, .expand-btn');
+    let show    = `overflow: visible`;
+    let hide    = `overflow: hidden`;
     let menuMgr = new HoverStyleMgr(menu  , 'span', show, hide);
     let arrowMgr= new HoverStyleMgr(arrows, 'span', hide, hide,
                                     ()=>{menuMgr.hoverOff();  },
                                     ()=>{menuMgr.deepHover(); });
 
-    if(menu.hasClass(foldClass)) {
-        linkMgr.hoverOff();
+    if(menu.hasClass('narrow')) {
         menuMgr.hoverOff();
         arrowMgr.hoverOff();
     }
-    menu.toggleClass(foldClass);
-    if(menu.hasClass(foldClass)) {
-        linkMgr.deepHover();
+    menu.toggleClass('narrow');
+    if(menu.hasClass('narrow')) {
         menuMgr.deepHover();
         arrowMgr.deepHover();
     }

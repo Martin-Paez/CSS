@@ -1,23 +1,28 @@
 export class ToggleList 
 {
-    constructor(event) {
-        this.event = event;
-        this.pairs = [];
+    constructor(defaultEvent, handler=this.defaultHandler) {
+        this.event = defaultEvent;
+        this.handler = handler;
+        this.list = [];
     }
 
-    add(btn, toggleClass, target=btn) {
-        this.pairs.push({
+    add(btn, value, target=btn, event=null) {
+        this.list.push({
             selector: btn,
-            class: toggleClass,
+            value: value,
             target: target
         });
-        btn.on(this.event, ()=> { this.toggle(); } )
+        btn.on(event||this.event, ()=> { this.toggle(); } )
     }
 
     toggle() 
     {
-        this.pairs.forEach(pair => {
-            pair.target.toggleClass(pair.class);
+        this.list.forEach(elem => {
+            this.handler(elem.target, elem.value);
         });
+    }
+
+    defaultHandler(target, value) {
+        target.toggleClass(value);
     }
 }
